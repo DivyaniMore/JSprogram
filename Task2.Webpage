@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change DOM Element</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        #myElement {
+            font-size: 24px;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            text-align: center;
+            background-color: #fff;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="myElement"></div>
+
+    <script>
+        const element = document.getElementById('myElement');
+        const messages = [
+            "Welcome to our site!",
+            "Enjoy exploring our content.",
+            "Don't forget to subscribe!",
+            "Feel free to reach out to us.",
+            "Thanks for visiting!"
+        ];
+        let index = 0;
+        const maxUpdates = messages.length; // Number of updates based on messages length
+
+        function updateText() {
+            if (index < maxUpdates) {
+                element.textContent = messages[index];
+                index++;
+            } else {
+                element.style.opacity = '0'; // Hide the element
+                clearInterval(updateInterval); // Stop the interval
+            }
+        }
+
+        // Initialize the text with the first message
+        updateText();
+
+        // Update the text every 2 seconds
+        const updateInterval = setInterval(updateText, 2000);
+    </script>
+</body>
+</html>
+
+
